@@ -1,0 +1,4 @@
+Tai khoan cua Quy khach sap het. Soan:
+1 gui 511 de ung 18 Phut noi mang(1.650d/p)
+2 gui 511 de ung 12 Phut ngoai mang(2.327d/p)
+Chi tiet LH 198 (mien phi).
