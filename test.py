@@ -1,34 +1,27 @@
-# import re
+import math
+# from sklearn.model_selection import train_test_split
+import numpy as np
+# import matplotlib.pyplot as plt
+# from sklearn import neighbors, datasets
 #
-# print(re.match('[a-z]', 'safasd065'))
+# iris = datasets.load_iris()
+# iris_X = iris.data
+# iris_y = iris.target
+#
+# print('Number of classes: %d' %len(np.unique(iris_y)))
+# print('Number of data points: %d' %len(iris_y))
+#
+#
+# X_train, X_test, y_train, y_test = train_test_split(
+#      iris_X, iris_y, test_size=50)
+#
+# print("Training size: %d" %len(y_train))
+# print("Test size    : %d" %len(y_test))
 
-class student:
-    def __init__(self, name, score, gender):
-        self.name = name
-        self.score = score
-        self.gender = gender
+# stats = {'a':1000, 'b':3000, 'c': 100}
+#
+# inverse = [(value, key) for key, value in stats.items()]
+# print(max(inverse)[1])
 
-    def toString(self):
-        return "[Name= " + self.name + ", Score= " + str(self.score) + ", Gender= " + self.gender +"]"
-
-def key(student):
-    return student.score
-
-def main():
-    student_list = []
-    student1 = student("Dang", 7.4, "Male")
-    student_list.append(student1)
-    student2 = student("Hieu", 8.8, "Male")
-    student_list.append(student2)
-    student3 = student("Nhung", 8.4, "FeMale")
-    student_list.append(student3)
-    for std in student_list:
-        print(std.toString())
-
-    print("***********")
-
-    test = sorted(student_list, key=key)
-    for std in test:
-        print(std.toString())
-
-main()
+a = ['d','c','b','c','a','b']
+print(np.unique(a))

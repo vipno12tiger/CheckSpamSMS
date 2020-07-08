@@ -58,13 +58,37 @@ def calculate_tfidf(docs):
         tfidf_res.append(res)
 
     final_res = pd.DataFrame(tfidf_res)
-    return final_res
+    return [tfidf_res, final_res]
+
+
+def getDictionary(List_Of_Diction, count):
+    sigma_tfidf = {}
+    for diction in List_Of_Diction:
+        for d in diction:
+            sigma_tfidf.__setitem__(d, 0)
+
+    for tag in sigma_tfidf:
+        sigma = 0.0
+        for diction in List_Of_Diction:
+            sigma = sigma + diction.get(tag)
+        sigma_tfidf.__setitem__(tag, sigma)
+
+    dictionary = []
+    c = 0
+    while c < count:
+        inverse = [(value, key) for key, value in sigma_tfidf.items()]
+        max_tfidf = max(inverse)[1]
+        dictionary.append(max_tfidf)
+        sigma_tfidf.pop(max_tfidf)
+        c += 1
+
+    return dictionary
 
 
 
-data = makeData.load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
-docs = data[0]
-labels = data[1]
-# print(labels)
-tfidf_dataFrame = calculate_tfidf(docs)
-print(tfidf_dataFrame.to_csv("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\DataFrame.csv"))
+# data = makeData.load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
+# docs = data[0]
+# labels = data[1]
+# tfidf_dataFrame = calculate_tfidf(docs)
+# print(tfidf_dataFrame[1].to_csv("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\DataFrame.csv"))
+# print(tfidf_dataFrame[0])

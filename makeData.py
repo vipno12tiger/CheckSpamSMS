@@ -1,6 +1,7 @@
 import os
 import re
 import unicodedata
+import numpy as np
 
 
 from underthesea import word_tokenize as wt
@@ -184,4 +185,4 @@ def load_Data(data_folder):
 
 
 # data = load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
-# print(len(data[0]))
+# print(len(np.unique(data[0])))
