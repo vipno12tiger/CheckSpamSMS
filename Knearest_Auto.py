@@ -55,24 +55,26 @@ def MyWeight(distances):
 
 
 
+def main():
+    data = makeData.load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
+    list_doc = data[0]
+    list_label = data[1]
 
-data = makeData.load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
-list_doc = data[0]
-list_label = data[1]
+    Corpus = Knearest_Hand.getDocumentListWithoutVector_and_Corpus(list_doc,list_label)[0]
+    DocumentListWithoutVector = Knearest_Hand.getDocumentListWithoutVector_and_Corpus(list_doc, list_label)[1]
+    DocumentListWithVector = Knearest_Hand.getDocumentListWithVetor(Corpus, DocumentListWithoutVector, count)
 
-Corpus = Knearest_Hand.getDocumentListWithoutVector_and_Corpus(list_doc,list_label)[0]
-DocumentListWithoutVector = Knearest_Hand.getDocumentListWithoutVector_and_Corpus(list_doc, list_label)[1]
-DocumentListWithVector = Knearest_Hand.getDocumentListWithVetor(Corpus, DocumentListWithoutVector, count)
+    docs_and_labels_vec = getVector_Doc_and_Label(DocumentListWithVector)
+    docs_vec = docs_and_labels_vec[0]
+    labels_vec = docs_and_labels_vec[1]
 
-docs_and_labels_vec = getVector_Doc_and_Label(DocumentListWithVector)
-docs_vec = docs_and_labels_vec[0]
-labels_vec = docs_and_labels_vec[1]
+    for i in range(10):
+        doc_train, doc_test, label_train, label_test = train_test_split(docs_vec, labels_vec, test_size=number_test_data)
 
-for i in range(10):
-    doc_train, doc_test, label_train, label_test = train_test_split(docs_vec, labels_vec, test_size=number_test_data)
+        clf = neighbors.KNeighborsClassifier(n_neighbors = 7, p = 2, weights=MyWeight)
+        clf.fit(doc_train, label_train)
+        label_pred = clf.predict(doc_test)
 
-    clf = neighbors.KNeighborsClassifier(n_neighbors = 7, p = 2, weights=MyWeight)
-    clf.fit(doc_train, label_train)
-    label_pred = clf.predict(doc_test)
+        print(check(label_pred,label_test))
 
-    print(check(label_pred,label_test))
+# main()

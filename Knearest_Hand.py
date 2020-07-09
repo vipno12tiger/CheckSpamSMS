@@ -128,20 +128,24 @@ def getTypeLabel(string):
         return 'Non-Spam'
 
 
-# data = makeData.load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
-# list_doc = data[0]
-# list_label = data[1]
-#
-# for number_test_data in number_test_datas:
-#     print('========', str(number_test_data))
-#     for neighbor in neighbor_number:
-#         print('*******', str(neighbor))
-#         for i in range(10):
-#             Corpus = getDocumentListWithoutVector_and_Corpus(list_doc,list_label)[0]
-#             DocumentListWithoutVector = getDocumentListWithoutVector_and_Corpus(list_doc, list_label)[1]
-#             DocumentListWithVector = getDocumentListWithVetor(Corpus, DocumentListWithoutVector, count)
-#
-#             a = getTestData(DocumentListWithVector, number_test_data)
-#             test_data = a[1]
-#             list_doc_with_vector = a[0]
-#             print(test_corpus(test_data, list_doc_with_vector, neighbor))
+
+def test():
+    data = makeData.load_Data("D:\\Giao trinh + Bai tap\\2019-2020\\2019.2\\PythonProject\\LastPython\\Data")
+    list_doc = data[0]
+    list_label = data[1]
+
+    for number_test_data in number_test_datas:
+        print('========', str(number_test_data))
+        for neighbor in neighbor_number:
+            print('*******', str(neighbor))
+            for i in range(10):
+                Corpus = getDocumentListWithoutVector_and_Corpus(list_doc,list_label)[0]
+                DocumentListWithoutVector = getDocumentListWithoutVector_and_Corpus(list_doc, list_label)[1]
+                DocumentListWithVector = getDocumentListWithVetor(Corpus, DocumentListWithoutVector, count)
+
+                a = getTestData(DocumentListWithVector, number_test_data)
+                test_data = a[1]
+                list_doc_with_vector = a[0]
+                print(test_corpus(test_data, list_doc_with_vector, neighbor))
+
+#test()
